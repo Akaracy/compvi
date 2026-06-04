@@ -12,7 +12,7 @@ import numpy as np
 import glob
 import os
 from module.transformation import translation, similarity, affine, homography, compute_reprojection_error
-from module.display_helper import mosaic_maker, load_images, show
+from module.display_helper import mosaic_maker, load_images, show, mosaic_maker_titles
 from module.match import draw_matches, ransac_filter, detect_and_match
 
 def _normalize_H(H, pts):
@@ -312,5 +312,9 @@ def main_mosaic():
     images = load_images("stitch_pic_low/*.jpg")
     mosaic_maker(images, name='mosaic_pic_low.png')
 
+def main_mosaic_titles():
+    images = load_images("output/stitch2_12/*.jpg")
+    titles = ["affine", "homography", "similarity", "translation"]
+    mosaic_maker_titles(images, titles=titles, name='mosaic_titles_2.png')
 if __name__ == "__main__":
-    main_stitch2()
+    main_mosaic_titles()
