@@ -1,7 +1,7 @@
 
 from module.display_helper import show, load_images, mosaic_maker, mosaic_maker_titles
 from module.transformation import translation, similarity, affine, homography, compute_reprojection_error
-from module.match import ransac_filter, detect_and_match, draw_matches
+from module.match import ransac_filter, detect_and_match
 from module.track import build_track
 from module.panorama_stitch import stitch_panorama_homography, stitch_two
 import os
@@ -65,7 +65,10 @@ def main_mosaic_titles():
     titles = ["affine", "homography", "similarity", "translation"]
     mosaic_maker_titles(images, titles=titles, name='mosaic_titles_2.png')
 
-
+def main_tracks():
+    images = load_images("stitch_pic/*.jpg")
+    tracks = build_track(images)
+    print(f"{len(tracks)} tracks construits à partir de {len(images)} images")
 
 if __name__ == "__main__":
-    main_mosaic()
+    main_tracks()
