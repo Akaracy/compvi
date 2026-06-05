@@ -243,7 +243,3 @@ def stitch_panorama_homography(images, max_dim=8000):
     result[valid] = (canvas_acc[valid] / weight_acc[valid, np.newaxis]).astype(np.uint8)
     return result
  
-
-# ─────────────────────────────────────────────────────────────
-# MAIN
-# ─────────────────────────────────────────────────────────────
